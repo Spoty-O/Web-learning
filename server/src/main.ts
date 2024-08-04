@@ -23,3 +23,4 @@ const newFunc = (x: number, text: undefined): void => {};
 setTimeout(() => {
   myFunc(10, "ok");
 }, 2000);
+
