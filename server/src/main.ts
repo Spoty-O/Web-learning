@@ -8,15 +8,17 @@ interface IObject {
   age: number;
 }
 
+let obj: IObject = { name: "Denys", last_name: "OK", age: 10 }; // типизация объектов
+
 let date = new Date();
 
-let obj: IObject = { name: "Denys", last_name: "OK", age: 10 }; // типизация объектов
 // обычная функция
 function myFunc(x: number, text: string): void {
   console.log(`${x} ${text}`);
+  return;
 }
 // стрелочная функция
-const newFunc = (x: number, text: undefined) => {};
+const newFunc = (x: number, text: undefined): void => {};
 
 setTimeout(() => {
   myFunc(10, "ok");

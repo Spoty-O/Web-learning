@@ -1,0 +1,7 @@
+SERVER_PORT=
+SERVER_HOST=
+DB_STORAGE=
+измените для вашего приложение название файла на .env и заполните поля
+SERVER_PORT - порт сервера (5000)
+SERVER_HOST - хост сервера (localhost)
+DB_STORAGE - название БД
