@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import ApiError from "../helpers/ApiErrors";
+import { User } from "../models/UserModel";
 
 class UserController {
   static async get_user(req: Request, res: Response, next: NextFunction) {

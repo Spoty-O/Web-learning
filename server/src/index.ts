@@ -3,7 +3,7 @@ import express, { Express, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import nodemon from "nodemon";
 import DataBaseController from "./controllers/DataBaseController.js";
-// import errorHandler from "./middleware/ErrorHandler.js";
+import errorHandler from "./middleware/ErrorHandler.js";
 import routes from "./routes/index.js";
 import { User } from "./models/UserModel.js";
 import dotenv from "dotenv";
@@ -21,10 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(cookieParser());
 
 app.use("/api", routes);
-// app.use(errorHandler);
-app.use("/", (req: Request, res: Response, next: NextFunction) => {
-  return res.json({ message: "Good job!" });
-});
+app.use(errorHandler);
 
 const start = async () => {
   try {
@@ -48,7 +45,6 @@ async function gracefulShutdown() {
 }
 
 process.on("SIGINT", gracefulShutdown);
-// setTimeout(start, 2000)
 nodemon({ script: "" }).on("restart", gracefulShutdown);
 
 start();

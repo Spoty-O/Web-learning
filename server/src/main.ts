@@ -8,7 +8,7 @@ interface IObject {
   age: number;
 }
 
-let date = new Date()
+let date = new Date();
 
 let obj: IObject = { name: "Denys", last_name: "OK", age: 10 }; // типизация объектов
 // обычная функция
@@ -21,4 +21,3 @@ const newFunc = (x: number, text: undefined) => {};
 setTimeout(() => {
   myFunc(10, "ok");
 }, 2000);
-dddgdg
