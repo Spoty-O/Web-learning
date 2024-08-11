@@ -22,7 +22,7 @@ export default class DataBaseController {
   async connectDB(): Promise<void> {
     try {
       await this.sequelize.authenticate();
-      await this.sequelize.sync({ alter: true });
+      // await this.sequelize.sync({ alter: true });
       console.log("✅ Connection has been established successfully.");
     } catch (error) {
       await this.sequelize.close();

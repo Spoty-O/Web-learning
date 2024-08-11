@@ -7,13 +7,14 @@ import errorHandler from "./middleware/ErrorHandler.js";
 import routes from "./routes/index.js";
 import { User } from "./models/UserModel.js";
 import dotenv from "dotenv";
+import { Task } from "./models/TaskModel.js";
 dotenv.config();
 
 const app: Express = express();
 const HOST = process.env.SERVER_HOST || "localhost";
 const PORT = process.env.SERVER_PORT || 5000;
 
-const DBController = new DataBaseController([User]);
+const DBController = new DataBaseController([User, Task]);
 
 app.use(cors({ origin: "*", credentials: true }));
 app.use(express.json());

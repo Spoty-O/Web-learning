@@ -10,14 +10,16 @@ import {
   Unique,
   BeforeSave,
   AutoIncrement,
+  ForeignKey,
+  BelongsTo,
 } from "sequelize-typescript";
-import { CreationUserAttributes, UserAttributes } from "../types/UserTypes";
-import { Task } from "./TaskModel";
+import { ITaskAttributes, ITaskCreationAttributes } from "../types/TaskTypes";
+import { User } from "./UserModel";
 
 @Table({
   timestamps: false,
 })
-export class User extends Model<UserAttributes, CreationUserAttributes> {
+export class Task extends Model<ITaskAttributes, ITaskCreationAttributes> {
   @PrimaryKey
   @AutoIncrement
   @Column(DataType.INTEGER)
@@ -25,17 +27,17 @@ export class User extends Model<UserAttributes, CreationUserAttributes> {
 
   @AllowNull(false)
   @Column(DataType.STRING(100))
-  login!: string;
+  name!: string;
 
   @AllowNull(false)
-  @Unique
   @Column(DataType.STRING(100))
-  email!: string;
+  text!: string;
 
+  @ForeignKey(() => User)
   @AllowNull(false)
-  @Column(DataType.STRING)
-  password!: string;
+  @Column(DataType.INTEGER)
+  userId!: number;
 
-  @HasMany(() => Task, { onDelete: "CASCADE" })
-  tasks!: Task[];
+  @BelongsTo(() => User)
+  user!: User;
 }
