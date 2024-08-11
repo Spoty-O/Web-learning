@@ -43,6 +43,25 @@ class UserController {
       return next(ApiError.internal("Server error!"));
     }
   }
+
+  static async delete_user(
+    req: Request<undefined, undefined, { id: number }>,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { id } = req.body;
+      const user = await User.findByPk(id);
+      if (!user) {
+        return next(ApiError.notFound("User not found"));
+      }
+      await user.destroy();
+      return res.json({ message: "User deleted." });
+    } catch (error) {
+      console.log(error);
+      return next(ApiError.internal("Server error!"));
+    }
+  }
 }
 
 export default UserController;

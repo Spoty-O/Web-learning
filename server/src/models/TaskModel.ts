@@ -38,6 +38,6 @@ export class Task extends Model<ITaskAttributes, ITaskCreationAttributes> {
   @Column(DataType.INTEGER)
   userId!: number;
 
-  @BelongsTo(() => User)
+  @BelongsTo(() => User, { foreignKey: "userId" })
   user!: User;
 }
