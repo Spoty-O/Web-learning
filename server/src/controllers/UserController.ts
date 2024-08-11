@@ -5,12 +5,12 @@ import { CreationUserAttributes } from "../types/UserTypes";
 
 class UserController {
   static async get_user(
-    req: Request<undefined, undefined, { id: number }>,
+    req: Request<undefined, undefined, { id: number }, { id: number }>,
     res: Response,
     next: NextFunction
   ) {
     try {
-      const { id } = req.body;
+      const { id } = req.query;
       const user = await User.findByPk(id);
       if (!user) {
         return next(ApiError.notFound("User not found."));

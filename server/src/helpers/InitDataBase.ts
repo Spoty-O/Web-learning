@@ -17,7 +17,11 @@ async function databaseInitialize() {
       { email: "ofdfadadadadf", login: "dfdf", password: "dadadaf" },
     ]);
     for (const user of users) {
-      await Task.create({ name: "Okay", text: "Go to shop", userId: user.id });
+      await user.$create("task", {
+        name: "Okay",
+        text: "Go to shop",
+        userId: user.id,
+      });
     }
     await DBController.disconnectDB();
   } catch (error) {

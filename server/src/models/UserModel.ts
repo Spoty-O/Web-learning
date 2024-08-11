@@ -42,7 +42,4 @@ export class User extends Model<UserAttributes, CreationUserAttributes> {
 
   @HasMany(() => Task, { onDelete: "CASCADE", sourceKey: "id" })
   tasks!: Task[];
-
-  // declare createTask: HasManyCreateAssociationMixin<Task>;
-  // declare getTask: HasManyGetAssociationsMixin<Task>;
 }
