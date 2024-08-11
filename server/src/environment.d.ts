@@ -1,5 +1,7 @@
 // import { Department } from "./models/Department.ts";
 
+import { User } from "./models/UserModel";
+
 // interface MyLocals<T> {
 //   departmentList?: Department[];
 //   recipientDepartment?: Department;
@@ -24,7 +26,7 @@ declare global {
   }
   namespace Express {
     interface Locals {
-      userId: string;
+      user: User;
     }
   }
 }

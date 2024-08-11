@@ -22,6 +22,25 @@ class UserController {
     }
   }
 
+  static async user_check(
+    req: Request<undefined, undefined, { id: number }>,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { id } = req.body;
+      const user = await User.findByPk(id);
+      if (!user) {
+        return next(ApiError.notFound("User not found."));
+      }
+      res.locals.user = user;
+      return next();
+    } catch (error) {
+      console.log(error);
+      return next(ApiError.internal("Server error!"));
+    }
+  }
+
   static async create_user(
     req: Request<undefined, undefined, CreationUserAttributes>,
     res: Response,

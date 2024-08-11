@@ -22,6 +22,24 @@ class TaskController {
     }
   }
 
+  static async get_tasks(
+    req: Request<undefined, undefined, { id: number }>,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { user } = res.locals;
+      const tasks = await user.$get("tasks");
+      if (!tasks) {
+        return next(ApiError.notFound("Tasks not found."));
+      }
+      return res.json(tasks);
+    } catch (error) {
+      console.log(error);
+      return next(ApiError.internal("Server error!"));
+    }
+  }
+
   //   static async create_task(
   //     req: Request<undefined, undefined, CreationUserAttributes>,
   //     res: Response,
