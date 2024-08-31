@@ -1,20 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { CreationUserAttributes, UserAttributes } from "../types/UserTypes";
 
 console.log(process.env);
-
-interface UserAttributes {
-  id: number;
-  login: string;
-  email: string;
-  password: string;
-}
-
-interface CreationUserAttributes {
-  id?: number;
-  login: string;
-  email: string;
-  password: string;
-}
 
 export const API = createApi({
   reducerPath: "baseAPI",
@@ -24,7 +11,7 @@ export const API = createApi({
   tagTypes: ["User", "BankAccount", "Transactions"],
   endpoints: (build) => ({
     // Получение списка клиентов
-    getUsers: build.query<UserAttributes, number>({
+    getUsers: build.query<UserAttributes[], number>({
       query: (id) => ({
         url: "user",
         method: "GET",
@@ -38,7 +25,7 @@ export const API = createApi({
     // Поиск клиента по имени и фамилии
     createUser: build.mutation<UserAttributes, CreationUserAttributes>({
       query: (data) => ({
-        url: `clients/find`,
+        url: `user`,
         method: "POST",
         body: data,
       }),
