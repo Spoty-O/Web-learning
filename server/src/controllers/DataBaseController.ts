@@ -1,3 +1,7 @@
+// username: process.env.DB_USER,
+// password: process.env.DB_PASSWORD,
+// host: process.env.DB_HOST,
+// port: process.env.DB_PORT,
 import { ModelCtor, Sequelize } from "sequelize-typescript";
 
 export default class DataBaseController {
@@ -7,10 +11,6 @@ export default class DataBaseController {
       database: process.env.DB_NAME || 'main.db',
       dialect: "sqlite",
       storage: `${process.env.DB_STORAGE}` || 'main.db',
-      // username: process.env.DB_USER,
-      // password: process.env.DB_PASSWORD,
-      // host: process.env.DB_HOST,
-      // port: process.env.DB_PORT,
       models, // or [Player, Team],
       pool: {
         idle: 10000,

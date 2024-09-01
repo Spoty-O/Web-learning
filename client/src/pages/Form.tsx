@@ -21,7 +21,6 @@ const Form = () => {
   };
   const handler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     await createUser(formData);
   };
 

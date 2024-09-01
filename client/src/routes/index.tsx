@@ -7,10 +7,10 @@ const router = createBrowserRouter([
     path: "/",
     children: [
       { path: "form", element: <Form /> },
-      { path: "main", element: <Main /> },
-      { path: "*", element: <Navigate to={"/form"} /> },
+      { path: "", element: <Main /> },
     ],
   },
+  { path: "*", element: <Navigate to={"/"} /> },
 ]);
 
 export default router;

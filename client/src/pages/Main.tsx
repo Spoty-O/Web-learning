@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Main.css";
+import { Link } from "react-router-dom";
 
 function Main() {
   return (
@@ -20,9 +21,9 @@ function Main() {
               Tas<span>ks</span>
             </a>
             <div className="nav-right">
-              <a href="/user" className="user-btn">
+              <Link to={"/form"} className="user-btn">
                 <i className="bx bxs-user"></i>
-              </a>
+              </Link>
               <a href="/add" className="write-btn">
                 <i className="bx bx-pencil"></i>Write
               </a>
