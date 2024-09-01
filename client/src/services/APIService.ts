@@ -11,18 +11,14 @@ export const API = createApi({
   tagTypes: ["User", "BankAccount", "Transactions"],
   endpoints: (build) => ({
     // Получение списка клиентов
-    getUsers: build.query<UserAttributes[], number>({
-      query: (id) => ({
+    getUsers: build.query<UserAttributes[], undefined>({
+      query: () => ({
         url: "user",
         method: "GET",
-        params: {
-          id,
-        },
       }),
       providesTags: ["User"],
     }),
 
-    // Поиск клиента по имени и фамилии
     createUser: build.mutation<UserAttributes, CreationUserAttributes>({
       query: (data) => ({
         url: `user`,

@@ -3,6 +3,7 @@ import "../styles/Form.css";
 import User from "../components/User";
 import { CreationUserAttributes } from "../types/UserTypes";
 import { API } from "../services/APIService";
+import '../styles/Table.css'
 
 const Form = () => {
   const [createUser] = API.useCreateUserMutation();
